@@ -1,124 +1,64 @@
-# HCL-Hackathon
 
-# **Customer Churn Prediction Groupp - 14**
+# Customer Churn Prediction
 
-## **1. Overview**
+**Project:** Predict customer churn using preprocessing, feature engineering, and machine learning.
 
-This project performs preprocessing and exploratory analysis on a **Customer Churn dataset**, including:
+**Status:** Example preprocessing, exploratory analysis, and model training scripts included.
 
-* Creating an imbalanced sample
-* Checking missing values
-* Outlier detection
-* Plotting distributions (Churn, Age Range, Gender, Subscription Type, Contract Length)
-* Encoding categorical features
-* Creating new numerical features
-* Saving a fully preprocessed dataset
-* Generating a correlation heatmap
+**Contents:** This repository contains notebooks and scripts to preprocess a customer churn dataset, explore features, train models, and save evaluation metrics.
 
----
+**Prerequisites**
+- **Python:** Recommended `3.8+`.
+- **Dependencies:** Install from `requirements.txt`.
 
-## **2. Tools Used**
+```powershell
+python -m pip install -r requirements.txt
+```
 
-| Library      | Purpose                        |
-| ------------ | ------------------------------ |
-| Pandas       | Data cleaning & manipulation   |
-| NumPy        | Numerical operations           |
-| Matplotlib   | Bar plots & histograms         |
-| Seaborn      | Boxplots, histograms, heatmaps |
-| Scikit-learn | Label Encoding                 |
+**How to use**
+- **Explore notebooks:** Open the notebooks (`.ipynb`) in the project root to reproduce EDA, preprocessing, and model experiments.
+- **Run preprocessing / training scripts:**
 
----
+```powershell
+python train_and_save_models.py
+python app.py
+```
 
-## **3. Key Steps**
+Use `train_and_save_models.py` to run model training and save models/metrics to the `models/` folder. Use `app.py` for quick local demonstration if applicable.
 
-### **Phase 1: Initial Sampling**
+**Data**
+- All datasets are in the `dataset/` folder.
+- Key files:
+  - `customer_churn_dataset-training-master.csv` — training raw data
+  - `customer_churn_dataset-testing-master.csv` — testing raw data
+  - `Preprocessed_data.csv`, `processed_data.csv`, `Feature_Engineered_data.csv` — transformed datasets used for modeling
+  - `SMOTE_Balanced_data.csv` — balanced dataset for training experiments
 
-* Loaded raw dataset
-* Created a **70% churn – 30% non-churn** sample
-* Verified **no missing values**
-* Checked outliers using boxplots (none found)
-* Saved as `random_data.csv`
+**Repository layout**
+- `app.py` : (optional) small demo / runner for prediction or inspection
+- `train_and_save_models.py` : trains models and writes `models/` outputs
+- `preprocessing_testing.py` : preprocessing utilities and tests
+- `*.ipynb` : notebooks for EDA, preprocessing, feature engineering, and model training
+- `dataset/` : CSV datasets and intermediate files
+- `models/` : saved models and `model_metrics.csv`
 
----
+**Quick commands**
+- Run preprocessing and training (basic):
 
-## **Phase 2: Preprocessing & Visualizations**
+```powershell
+python train_and_save_models.py
+```
 
-### **A. Basic Plots**
+- Run a notebook (if you have Jupyter installed):
 
-1. **Churn Distribution**
+```powershell
+jupyter notebook
+```
 
-   * Bar plot of churn counts
+**Notes & suggestions**
+- Notebooks include exploratory plots and step-by-step preprocessing. Review `feature_engineering.ipynb` and `model_training.ipynb` for model details.
+- If you want reproducible experiments, consider creating a virtual environment and pinning package versions.
 
-2. **Age Range Distribution**
-
-   * Age grouped into 10-year bins
-   * Temporary feature removed after plotting
-
-3. **Gender, Subscription Type, Contract Length**
-
-   * Simple bar charts to inspect category frequencies
-
-4. **Numeric Feature Histograms**
-
-   * Histograms + KDE to check variable distributions
-
----
-
-### **B. Feature Engineering**
-
-1. **Label Encoding**
-
-   * Encoded: `Gender`, `Subscription Type`
-
-2. **Contract Duration Conversion**
-
-   * Mapped:
-
-     * Annual → 12 months
-     * Quarterly → 3 months
-     * Monthly → 1 month
-   * Dropped original column
-
-3. **Column Cleanup**
-
-   * Removed `CustomerID`
-   * Moved `Churn` to last column
-
-4. **Saved final dataset**
-   → `Preprocessed_data.csv`
-
----
-
-### **C. Correlation Heatmap**
-
-* Generated heatmap for the numeric features
-* Used to observe relationships affecting churn
-
----
-
-## **4. Findings**
-
-* No missing values
-* No significant outliers
-* Balanced visual distributions
-* Clean numeric and encoded categorical fields
-* Strong correlations visible after preprocessing
-
----
-
-## **5. Conclusion**
-
-The dataset is now:
-
-* Clean
-* Properly encoded
-* Fully visualized
-* Feature-engineered
-* Ready for machine learning models
-
-Output files:
-
-* `random_data.csv`
-* `Preprocessed_data.csv`
-
----
+**Outputs**
+- Processed datasets: files in `dataset/` with `Preprocessed`, `Feature_Engineered`, or `SMOTE` in their names.
+- Models & metrics: `models/model_metrics.csv` and any model artifacts saved by `train_and_save_models.py`.
